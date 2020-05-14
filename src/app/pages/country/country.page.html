@@ -1,0 +1,38 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Country Status</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+ <img src="https://media.giphy.com/media/pHYbsx9pNsBfztKyUF/giphy.gif">
+<ion-card>
+
+  <ion-card-header>
+                 
+
+    <ion-card-subtitle>Latest live feed</ion-card-subtitle>
+    <ion-card-title>Current Status</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+            <ion-chip  color="secondary" item-content>
+  <ion-label class="chip"  color="warning"><b>Total Confirmed:</b> {{confirmed}}</ion-label>
+</ion-chip>
+   <ion-chip color="secondary" item-content>
+  <ion-label class="chip" color="danger"><b>Total Deaths:</b> {{recovered}}</ion-label>
+</ion-chip>
+   <ion-chip color="secondary" item-content>
+  <ion-label class="chip" color="success"><b>Total Recovered:</b> {{deaths}}</ion-label>
+</ion-chip>
+  </ion-card-content>
+</ion-card>
+
+
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color='primary' (click)="startApp()" [hidden]="!showSkip">Skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager="false">
+<ion-slide>
+      <img src="https://schoolnutrition.org/uploadedImages/Home_Page/Slider/covid19-slider.gif" class="slide-image" />
+      <h2 class="slide-title">
+        Welcome to
+        <b>Covid 19 Tracker</b>
+      </h2>
+      <p>
+        The
+        <b>Covid 19 Tracker</b> accomplishes live retrieval of covid 19's real time data and also providing
+        the best possible UI Experience.
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7e7e889a-de90-46e6-b7e0-a80a0e698de6/dbpu9b-51118e9e-16bd-4a28-bbe6-921fc1da8181.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvN2U3ZTg4OWEtZGU5MC00NmU2LWI3ZTAtYTgwYTBlNjk4ZGU2XC9kYnB1OWItNTExMThlOWUtMTZiZC00YTI4LWJiZTYtOTIxZmMxZGE4MTgxLmdpZiJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl19.8sDkkAM8fVZqcpdm3RjT8-4ehdh4dsAfq4cD00zQT-g" class="slide-image" />
+      <h2 class="slide-title">What is Covid 19 Tracker?</h2>
+   
+      <p>
+        <b>Covid 19 Tracker</b> acts a handbook to keep track of covid 19 related information.</p>
+
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />
+      <h2 class="slide-title">Ready to expore?</h2>
+      <ion-button fill="clear" (click)="startApp()">
+        Continue
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

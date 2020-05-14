@@ -1,0 +1,40 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Global Comparison</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle>Covid-19 Deaths</ion-card-subtitle>
+      <ion-card-title>Top 5 Countries</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    <!-- Crescent -->
+    <div *ngIf="spinnerFlag">
+<ion-spinner name="lines"></ion-spinner>
+</div>
+      <canvas #barChart></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle>Covid-19 Case Comparison</ion-card-subtitle>
+      <ion-card-title>Relative Comparison</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    <!-- Crescent -->
+    <div *ngIf="spinnerFlag">
+<ion-spinner name="lines"></ion-spinner>
+</div>
+      <canvas #comparison></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
