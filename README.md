@@ -1,16 +1,17 @@
-# Ionic Angular Conference Application
+# Covid-19 Tracker
+### Track real time covid-19 info at your fingertips.
 
-This application is purely a kitchen-sink demo of the Ionic Framework and Angular.
+This application accomplishes to extract raw information and does its best to provide real time data at your table.
 
-**There is not an actual Ionic Conference at this time.** This project is just to show off Ionic components in a real-world application. Please go through the steps in [CONTRIBUTING](https://github.com/ionic-team/ionic-conference-app/blob/master/.github/CONTRIBUTING.md) before submitting an issue.
+<img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/resources/icon.png" width="150">
 
+ **APK FILE URL** :  https://github.com/CajetanRodrigues/covid-tracker/blob/master/app-debug.apk
 
 ## Table of Contents
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
 - [App Preview](#app-preview)
 - [Deploying](#deploying)
-  - [Progressive Web App](#progressive-web-app)
   - [Android](#android)
   - [iOS](#ios)
 
@@ -19,59 +20,49 @@ This application is purely a kitchen-sink demo of the Ionic Framework and Angula
 
 * [Download the installer](https://nodejs.org/) for Node LTS.
 * Install the ionic CLI globally: `npm install -g ionic`
-* Clone this repository: `git clone https://github.com/ionic-team/ionic-conference-app.git`.
+* Clone this repository: `https://github.com/CajetanRodrigues/covid-tracker.git`.
 * Run `npm install` from the project root.
 * Run `ionic serve` in a terminal from the project root.
-* Profit. :tada:
+* You are now free to explore!. :tada:
 
 _Note: See [How to Prevent Permissions Errors](https://docs.npmjs.com/getting-started/fixing-npm-permissions) if you are running into issues when trying to install packages globally._
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/ionic-team/ionic-conference-app/blob/master/.github/CONTRIBUTING.md) :tada::+1:
+See [CONTRIBUTING.md](https://github.com/CajetanRodrigues/covid-tracker/CONTRIBUTING.md) :tada::+1:
 
 
-## App Preview
+## App Preview (Orignal & Dark mode)
 
-### [Menu](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/menu/menu.html)
+<img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/intro.PNG" width="250">
 
-| Material Design  | iOS  |
+
+### Global covid-19 cases
+
+| Orignal  | Dark |
 | -----------------| -----|
-| ![Android Menu](/resources/screenshots/android-menu.png) | ![iOS Menu](/resources/screenshots/ios-menu.png) |
+| <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/globalw.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/global.PNG" width="250"> 
 
 
-### [Schedule Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/schedule/schedule.html)
+### Country covid-19 cases
 
-| Material Design  | iOS  |
+| Orignal  | Dark |
 | -----------------| -----|
-| ![Android Schedule](/resources/screenshots/android-schedule.png) | ![iOS Schedule](/resources/screenshots/ios-schedule.png) |
+| <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/countryw.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/country.PNG" width="250"> 
 
-### [Speakers Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/speaker-list/speaker-list.html)
+### Analysis of covid-19 cases
 
-| Material Design  | iOS  |
+| Orignal  | Dark |
 | -----------------| -----|
-| ![Android Speakers](/resources/screenshots/android-speakers.png) | ![iOS Speakers](/resources/screenshots/ios-speakers.png) |
+| <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/analysisw.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/analysis.PNG" width="250"> 
 
-### [Speaker Detail Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/speaker-detail/speaker-detail.html)
+### All Countries covid-19 cases
 
-| Material Design  | iOS  |
+| Orignal  | Dark |
 | -----------------| -----|
-| ![Android Speaker Detail](/resources/screenshots/android-speaker-detail.png) | ![iOS Speaker Detail](/resources/screenshots/ios-speaker-detail.png) |
-
-### [About Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/about/about.html)
-
-| Material Design  | iOS  |
-| -----------------| -----|
-| ![Android About](/resources/screenshots/android-about.png) | ![iOS About](/resources/screenshots/ios-about.png) |
-
+| <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/countriesw.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/countries.PNG" width="250"> 
 
 ## Deploying
-
-### Progressive Web App
-
-1. Un-comment [these lines](https://github.com/ionic-team/ionic2-app-base/blob/master/src/index.html#L21)
-2. Run `npm run ionic:build --prod`
-3. Push the `www` folder to your hosting service
 
 ### Android
 
@@ -80,3 +71,9 @@ See [CONTRIBUTING.md](https://github.com/ionic-team/ionic-conference-app/blob/ma
 ### iOS
 
 1. Run `ionic cordova run ios --prod`
+
+
+
+
+
+
