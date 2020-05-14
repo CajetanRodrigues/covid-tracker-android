@@ -32,7 +32,7 @@ _Note: See [How to Prevent Permissions Errors](https://docs.npmjs.com/getting-st
 See [CONTRIBUTING.md](https://github.com/CajetanRodrigues/covid-tracker/CONTRIBUTING.md) :tada::+1:
 
 
-## App Preview
+## App Preview (Orignal & Dark mode)
 
 <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/intro.PNG" width="250">
 
