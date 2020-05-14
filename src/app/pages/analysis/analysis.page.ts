@@ -23,9 +23,19 @@ export class AnalysisPage implements OnInit {
   global_recovered: any;
   global_deaths: any;
   constructor(private covid19: Covid19Service) {
+    this.apiCall();
+    setInterval(() => {
+      setTimeout(() => {
+        this.countryData = [];
+        this.countryDeathsArray = [];
+        this.countryNamesArray = [];
+        this.apiCall();
+      },5000);
+    }, 21600000);
+  }
+  apiCall() {
     this.covid19.fetchGlobal()
       .subscribe((data) => {
-        console.log(data);
         this.global_confirmed = data.confirmed.value;
         this.global_recovered = data.recovered.value;
         this.global_deaths = data.deaths.value;
@@ -35,7 +45,6 @@ export class AnalysisPage implements OnInit {
       }, 3000);
 
     this.covid19.fetchCountries().subscribe((data: any) => {
-        console.log(data.countries.length);
         data.countries.forEach(country => {
           // console.log(country.iso3)
           this.covid19.fetchCountryData(country.iso3)

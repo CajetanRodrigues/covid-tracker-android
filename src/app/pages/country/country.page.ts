@@ -14,15 +14,21 @@ export class CountryPage implements OnInit {
 
 
   constructor(private covid19: Covid19Service) {
-    this.covid19.fetchCountryData('IN')
-      .subscribe((data) => {
-        console.log(data);
-        this.confirmed = data.confirmed.value;
-        this.deaths = data.deaths.value;
-        this.recovered = data.deaths.value;
-      });
+    this.apiCall();
+    // Update after every 6 hours
+    setInterval(() => {
+      this.apiCall();
+    }, 21600000 );
   }
-
+  apiCall() {
+    this.covid19.fetchCountryData('IN')
+    .subscribe((data) => {
+      console.log(data);
+      this.confirmed = data.confirmed.value;
+      this.deaths = data.deaths.value;
+      this.recovered = data.deaths.value;
+    });
+  }
   ngOnInit() {
   }
 

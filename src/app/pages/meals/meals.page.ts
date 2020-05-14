@@ -25,46 +25,50 @@ export class MealsPage implements OnInit {
               private modalCtrl: ModalController,
               private covid19: Covid19Service,
               private vibration: Vibration) {
-                this.covid19.fetchCovidLive().subscribe((data) => {
-                  console.log(data);
-                  this.countries = data.Countries;
-                  this.countries.sort((a, b) => {
-                    return b.TotalConfirmed - a.TotalConfirmed;
-                  });
-                  // this.global = data.Global
-
-                });
-                this.covid19.fetchGlobal()
-                .subscribe((data) => {
-                  // console.log(data)
-                  this.global_confirmed = data.confirmed.value;
-                  this.global_recovered = data.recovered.value;
-                  this.global_deaths = data.deaths.value;
-                });
-                this.covid19.fetchCountries().subscribe((data: any) => {
-                  console.log(data.countries.length);
-                  data.countries.forEach(country => {
-                    // console.log(country.iso3)
-                    this.covid19.fetchCountryData(country.iso3)
-                    .subscribe((countryData) => {
-                      // console.log(countryData)
-                      this.countryData.push(
-                        {
-                          country_name: country.name,
-                          ...countryData,
-                          country_code: country.iso2
-                        }
-                      );
-                      this.countryData.sort((a, b) => {
-                        return b.confirmed.value - a.confirmed.value;
-                      });
-                    });
-                  });
-
-                  this.backupCountryArray = this.countryData;
-                });
+               this.apiCall();
+               setInterval(() => {
+                 this.countries = [];
+                 this.countryData = [];
+                 setTimeout(() => {
+                  this.apiCall();
+                 }, 5000);
+               }, 21600000);
    }
+   apiCall() {
+    this.covid19.fetchCovidLive().subscribe((data) => {
+      this.countries = data.Countries;
+      this.countries.sort((a, b) => {
+        return b.TotalConfirmed - a.TotalConfirmed;
+      });
+    });
+    this.covid19.fetchGlobal()
+    .subscribe((data) => {
+      this.global_confirmed = data.confirmed.value;
+      this.global_recovered = data.recovered.value;
+      this.global_deaths = data.deaths.value;
+    });
+    this.covid19.fetchCountries().subscribe((data: any) => {
+      data.countries.forEach(country => {
+        // console.log(country.iso3)
+        this.covid19.fetchCountryData(country.iso3)
+        .subscribe((countryData) => {
+          // console.log(countryData)
+          this.countryData.push(
+            {
+              country_name: country.name,
+              ...countryData,
+              country_code: country.iso2
+            }
+          );
+          this.countryData.sort((a, b) => {
+            return b.confirmed.value - a.confirmed.value;
+          });
+        });
+      });
 
+      this.backupCountryArray = this.countryData;
+    });
+   }
   ngOnInit() {
     setTimeout(() => {
       this.spinnerFlag = false;
@@ -74,7 +78,6 @@ export class MealsPage implements OnInit {
     this.countryData.sort((a, b) => {
       return b.confirmed.value - a.confirmed.value;
     });
-    console.log(this.countryData);
   }
   vibrate() {
     this.vibration.vibrate(100);
@@ -92,7 +95,6 @@ export class MealsPage implements OnInit {
   }
   async presentModal(country: any) {
     this.vibrate();
-    console.log(country);
     const modal = await this.modalController.create({
       component: AboutPage,
       componentProps: {

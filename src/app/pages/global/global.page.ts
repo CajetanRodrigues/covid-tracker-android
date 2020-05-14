@@ -14,15 +14,21 @@ export class GlobalPage implements OnInit {
 
   constructor(private covid19: Covid19Service,
     private storage: Storage) {
+      this.apiCall();
+      // Update after every 6 hours
+      setInterval(() => {
+        this.apiCall();
+      },21600000);
+   }
+  apiCall() {
     this.covid19.fetchGlobal()
     .subscribe((data) => {
-      storage.set('global_confirmed', data.confirmed.value);
-      storage.set('global_recovered', data.recovered.value);
-      storage.set('global_deaths', data.deaths.value);
+      this.storage.set('global_confirmed', data.confirmed.value);
+      this.storage.set('global_recovered', data.recovered.value);
+      this.storage.set('global_deaths', data.deaths.value);
 
     });
-   }
-
+  }
   ngOnInit() {
     this.storage.get('global_confirmed').then((val) => {
       console.log('Your age is', val);
