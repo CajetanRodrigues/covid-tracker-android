@@ -48,15 +48,23 @@
     <ion-router-outlet id="main-content"></ion-router-outlet>
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button (click)="vibrate()" tab="global">
+
+<ion-tab-button (click)="vibrate()" tab="country">
+      <ion-icon src="../assets/icon/map-sharp.svg" color="primary"></ion-icon>
+      <ion-label>Country</ion-label>
+    </ion-tab-button>
+
+<ion-tab-button (click)="vibrate()" tab="global">
       <ion-icon src="../assets/icon/planet-sharp.svg" color="primary"></ion-icon>
       <ion-label>Global</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button (click)="vibrate()" tab="country">
-      <ion-icon src="../assets/icon/map-sharp.svg" color="primary"></ion-icon>
-      <ion-label>Country</ion-label>
+    <ion-tab-button (click)="vibrate()" tab="district">
+      <ion-icon src="../assets/icon/location-sharp.svg" color="primary"></ion-icon>
+      <ion-label>District</ion-label>
     </ion-tab-button>
+
+    
 
     <ion-tab-button (click)="vibrate()" tab="analysis">  
       <ion-icon src="../assets/icon/bar-chart-sharp.svg" color="primary"></ion-icon>

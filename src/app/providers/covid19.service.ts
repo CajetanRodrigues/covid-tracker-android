@@ -12,22 +12,32 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class Covid19Service {
+  countryArray: any[];
 
   constructor(private http: HttpClient) { }
-  fetchCovidLive(): Observable<any> {
+
+  fetchCountryData(): Observable<any> {
     return this.http.get<any>
-      ('https://api.covid19api.com/summary', httpOptions);
+      ('http://13.127.91.5:8082/countries', httpOptions);
   }
-  fetchGlobal(): Observable<any> {
+  fetchstateData(): Observable<any> {
     return this.http.get<any>
-      ('https://covid19.mathdro.id/api/', httpOptions);
+      ('http://13.127.91.5:8082/states', httpOptions);
   }
-  fetchCountries(): Observable<any> {
+  fetchDistrictData(): Observable<any> {
     return this.http.get<any>
-      ('https://covid19.mathdro.id/api/countries', httpOptions);
+      ('http://13.127.91.5:8082/districts', httpOptions);
   }
-  fetchCountryData(code: string): Observable<any> {
+  fetchGlobalData(): Observable<any> {
     return this.http.get<any>
-      ('https://covid19.mathdro.id/api/countries/' + code, httpOptions);
+      ('http://13.127.91.5:8082/global', httpOptions);
+  }
+  fetchState(): Observable<any> {
+    return this.http.get<any>
+      ('http://13.127.91.5:8082/state', httpOptions);
+  }
+  fetchCountry(): Observable<any> {
+    return this.http.get<any>
+      ('http://13.127.91.5:8082/country', httpOptions);
   }
 }

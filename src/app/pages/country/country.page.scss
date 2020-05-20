@@ -3,3 +3,31 @@ img {
     display: block;
     margin: auto;
 }
+.table {
+    font-size: 13px;
+}
+.location {
+    font-weight: bold;
+}
+.confirmed {
+    color:red;
+    font-weight: bold;
+    float: right;
+}
+.recovered {
+    color: green;
+    font-weight: bold;
+    float: right;
+}
+.deceased{
+    color: orangered;
+    font-weight: bold;
+    float: right;
+}
+.active {
+    color: yellowgreen;
+    font-weight: bold;
+}
+#divider {
+    border-top: 1px solid grey;
+}

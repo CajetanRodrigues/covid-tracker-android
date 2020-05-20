@@ -1,0 +1,82 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Maharashtra Status</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ <img src="https://thumbs.gfycat.com/CrispUglyGalapagossealion-size_restricted.gif">
+<ion-card>
+
+  <ion-card-header>
+                 
+
+    <ion-card-title><b>District Level Status</b></ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+<ion-spinner *ngIf="spinnerFlag" name="lines"></ion-spinner>
+
+<ion-grid>
+  <ion-row  class="table">
+    <ion-col class="location" size="4">
+      <div>
+        Location
+      </div>
+    </ion-col>
+    <ion-col class="confirmed">
+      <div>
+        Confirmed
+      </div>
+    </ion-col>
+    <ion-col class="recovered">
+      <div>
+        Recovered
+      </div>
+    </ion-col>
+    <ion-col class="deceased">
+      <div>
+        Deaths
+      </div>
+    </ion-col>
+  </ion-row>
+
+
+
+<div  *ngFor="let district of districts">
+    <hr id="divider">
+    <ion-row class="table">
+    <ion-col class="location" size="4">
+      <div>
+        {{district.name}}
+      </div>
+    </ion-col>
+    <ion-col class="confirmed">
+      <div style="float:right">
+        {{district.totalCases}}
+      </div>
+    </ion-col>
+    <ion-col class="recovered">
+      <div style="float:right">
+        {{district.recovered}}
+      </div>
+    </ion-col>
+    <ion-col class="deceased">
+      <div style="float:right">
+        {{district.deaths}}
+      </div>
+    </ion-col>
+  </ion-row>
+  </div>
+
+
+</ion-grid>
+
+
+  </ion-card-content>
+</ion-card>
+</ion-content>

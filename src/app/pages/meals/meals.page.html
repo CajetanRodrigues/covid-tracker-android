@@ -15,27 +15,7 @@
         <div *ngIf="spinnerFlag">
 <ion-spinner name="lines"></ion-spinner>
 </div>
-    <ion-card (click)="presentModal(country)" class="card" mode="ios" *ngFor="let country of countryData"  >
-        <ion-item>
-            <ion-avatar slot="start">
-                <img src="../assets/country-flag/png250px/{{country.country_code | lowercase}}.png">
-            </ion-avatar>
-            <ion-icon src="../assets/icon/arrow-redo-sharp.svg" color="primary"></ion-icon>
-
-            <ion-label><b> {{country.country_name}}</b></ion-label>
-        </ion-item>
-        <ion-card-content>
-        <ion-chip  color="secondary" item-content>
-  <ion-label class="chip"  color="warning"><b>Total Confirmed:</b> {{country.confirmed.value}}</ion-label>
-</ion-chip>
-   <ion-chip color="secondary" item-content>
-  <ion-label class="chip" color="danger"><b>Total Deaths:</b> {{country.deaths.value}}</ion-label>
-</ion-chip>
-   <ion-chip color="secondary" item-content>
-  <ion-label class="chip" color="success"><b>Total Recovered:</b> {{country.recovered.value}}</ion-label>
-</ion-chip>
-</ion-card-content> 
-    </ion-card>
+    
 
 </ion-content>
 <div class="footer">

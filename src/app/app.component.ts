@@ -19,14 +19,19 @@ import { Storage } from '@ionic/storage';
 export class AppComponent implements OnInit {
   appPages = [
     {
-      title: 'Global Status',
-      url: 'global',
-      icon: 'planet'
-    },
-    {
       title: 'Country Status',
       url: 'country',
       icon: 'map'
+    },
+    {
+      title: 'District Status',
+      url: 'district',
+      icon: 'location'
+    },
+    {
+      title: 'Global Status',
+      url: 'global',
+      icon: 'planet'
     },
     {
       title: 'Global Comparison',

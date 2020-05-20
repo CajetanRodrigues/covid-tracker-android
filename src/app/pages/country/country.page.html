@@ -18,21 +18,81 @@
                  
 
     <ion-card-subtitle>Latest live feed</ion-card-subtitle>
-    <ion-card-title>Current Status</ion-card-title>
+    <ion-card-title>Country Level Status</ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
             <ion-chip  color="secondary" item-content>
-  <ion-label class="chip"  color="warning"><b>Total Confirmed:</b> {{confirmed}}</ion-label>
+  <ion-label class="chip"  color="warning">Confirmed: <b>{{confirmed}}</b> </ion-label>
 </ion-chip>
    <ion-chip color="secondary" item-content>
-  <ion-label class="chip" color="danger"><b>Total Deaths:</b> {{recovered}}</ion-label>
+  <ion-label class="chip" color="danger">Recovered: <b>{{recovered}}</b></ion-label>
 </ion-chip>
    <ion-chip color="secondary" item-content>
-  <ion-label class="chip" color="success"><b>Total Recovered:</b> {{deaths}}</ion-label>
+  <ion-label class="chip" color="success">Deceased: <b>{{deaths}}</b> </ion-label>
 </ion-chip>
   </ion-card-content>
 </ion-card>
+
+
+<ion-spinner *ngIf="spinnerFlag" name="lines"></ion-spinner>
+<ion-grid>
+  <ion-row  class="table">
+    <ion-col >
+      <div class="location">
+        Location
+      </div>
+    </ion-col>
+    <ion-col (click)="sortToggle('totalCases')">
+      <div class="confirmed" >
+        Confirmed
+      </div>
+    </ion-col>
+    <ion-col (click)="sortToggle('recovered')">
+      <div class="recovered" >
+        Recovered
+      </div>
+    </ion-col>
+    <ion-col (click)="sortToggle('deaths')">
+      <div class="deceased" >
+        Deaths
+      </div>
+    </ion-col>
+  </ion-row>
+
+
+
+<div  *ngFor="let state of stateArray">
+    <hr id="divider">
+    <ion-row class="table">
+    <ion-col class="location">
+      <div>
+        {{state.name}}
+      </div>
+    </ion-col>
+    <ion-col class="confirmed">
+      <div style="float:right">
+        {{state.totalCases}}
+      </div>
+    </ion-col>
+    <ion-col class="recovered">
+      <div style="float:right">
+        {{state.recoveries}}
+      </div>
+    </ion-col>
+    <ion-col class="deceased">
+      <div style="float:right">
+        {{state.deaths}}
+      </div>
+    </ion-col>
+  </ion-row>
+  </div>
+
+
+</ion-grid>
+
+
+
 
 
 </ion-content>

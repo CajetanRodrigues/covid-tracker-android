@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.covid.tracker" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Covid19 Tracker</name>
-    <description>Track Covid 19 cases</description>
+<widget id="com.cajetan.c19" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>c19</name>
+    <description>c19</description>
     <author email="cajetanrodrigues88@gmail.com" href="https://github.com/CajetanRodrigues">Cajetan Rodrigues</author>
     <content src="index.html" />
     <access origin="*" />

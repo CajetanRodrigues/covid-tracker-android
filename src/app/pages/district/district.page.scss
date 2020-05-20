@@ -1,0 +1,26 @@
+.table {
+    font-size: 15px;
+    
+}
+.location {
+    font-weight: bold;
+}
+.confirmed {
+    color:red;
+    font-weight: bold;
+}
+.recovered {
+    color: green;
+    font-weight: bold;
+}
+.deceased{
+    color: orangered;
+    font-weight: bold;
+}
+.active {
+    color: yellowgreen;
+    font-weight: bold;
+}
+#divider {
+    border-top: 1px solid grey;
+}

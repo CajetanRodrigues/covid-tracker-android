@@ -5,7 +5,7 @@ import { CheckTutorial } from './providers/check-tutorial.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/global', // Change it to /tutorial later 
+    redirectTo: '/district', // Change it to /tutorial later 
     pathMatch: 'full'
   },
   {
@@ -28,7 +28,12 @@ const routes: Routes = [
   {
     path: 'analysis',
     loadChildren: () => import('./pages/analysis/analysis.module').then( m => m.AnalysisPageModule)
+  },
+  {
+    path: 'district',
+    loadChildren: () => import('./pages/district/district.module').then( m => m.DistrictPageModule)
   }
+
 
 
 
