@@ -18,7 +18,7 @@
                  
 
     <ion-card-subtitle>Latest live feed</ion-card-subtitle>
-    <ion-card-title>Country Level Status</ion-card-title>
+    <ion-card-title><b>India Status</b></ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
@@ -35,7 +35,7 @@
 </ion-card>
 
 
-<ion-spinner *ngIf="spinnerFlag" name="lines"></ion-spinner>
+<ion-spinner *ngIf="stateArray.length === 0" name="lines"></ion-spinner>
 <ion-grid>
   <ion-row  class="table">
     <ion-col >
@@ -62,7 +62,7 @@
 
 
 
-<div  *ngFor="let state of stateArray">
+<div  *ngFor="let state of dynamicStateArray">
     <hr id="divider">
     <ion-row class="table">
     <ion-col class="location">
@@ -94,5 +94,10 @@
 
 
 
-
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Covid19Service } from '../../providers/covid19.service';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { DataService } from '../../providers/data.service';
+import { IonInfiniteScroll } from '@ionic/angular';
+import { IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-country',
@@ -7,14 +9,17 @@ import { Covid19Service } from '../../providers/covid19.service';
   styleUrls: ['./country.page.scss'],
 })
 export class CountryPage implements OnInit {
-
+  @ViewChild(IonInfiniteScroll, {static: false}) infiniteScroll: IonInfiniteScroll;
+  @ViewChild(IonContent, {static: false}) content: IonContent;
   confirmed: any;
   recovered: any;
   deaths: any;
   stateArray = [];
   spinnerFlag = true;
   sortToggleflag = false;
-  constructor(private covid19: Covid19Service) {
+  dynamicStateArray: any = [];
+  event:any;
+  constructor(private data: DataService) {
 
     this.apiCall();
     setTimeout(() => {
@@ -22,9 +27,9 @@ export class CountryPage implements OnInit {
     }, 1500);
 
     // Update after every 6 hours
-    setInterval(() => {
-      this.apiCall();
-    }, 21600000 );
+    // setInterval(() => {
+    //   this.apiCall();
+    // }, 21600000 );
   }
   sortToggle(param) {
 
@@ -34,11 +39,15 @@ export class CountryPage implements OnInit {
         this.stateArray.sort((a, b) => {
           return b.recoveries - a.recoveries;
         });
+        this.dynamicStateArray = this.stateArray.slice(0,this.dynamicStateArray.length-1);
+
         this.sortToggleflag = false;
       } else {
         this.stateArray.sort((a, b) => {
           return a.recoveries - b.recoveries;
         });
+        this.dynamicStateArray = this.stateArray.slice(0,this.dynamicStateArray.length-1);
+
         this.sortToggleflag = true;
       }
   }
@@ -49,11 +58,15 @@ export class CountryPage implements OnInit {
       this.stateArray.sort((a, b) => {
         return b.deaths - a.deaths;
       });
+      this.dynamicStateArray = this.stateArray.slice(0,this.dynamicStateArray.length-1);
+
       this.sortToggleflag = false;
     } else {
       this.stateArray.sort((a, b) => {
         return a.deaths - b.deaths;
       });
+      this.dynamicStateArray = this.stateArray.slice(0,this.dynamicStateArray.length-1);
+
       this.sortToggleflag = true;
     }
 }
@@ -63,12 +76,16 @@ export class CountryPage implements OnInit {
         this.stateArray.sort((a, b) => {
           return b.totalCases - a.totalCases;
         });
+        this.dynamicStateArray = this.stateArray.slice(0,this.dynamicStateArray.length-1);
+
         this.sortToggleflag = false;
         console.log(this.sortToggleflag);
       } else {
         this.stateArray.sort((a, b) => {
           return a.totalCases - b.totalCases;
         });
+        this.dynamicStateArray = this.stateArray.slice(0,this.dynamicStateArray.length-1);
+
         this.sortToggleflag = true;
         console.log(this.sortToggleflag);
 
@@ -79,15 +96,17 @@ export class CountryPage implements OnInit {
 
 }
   apiCall() {
-    this.covid19.fetchstateData()
+    this.data.fetchstateData()
     .subscribe((data) => {
       console.log(data);
       data.sort((a, b) => {
         return b.totalCases - a.totalCases;
       });
       this.stateArray = data;
+      this.dynamicStateArray = data.slice(0,10);
+
     });
-    this.covid19.fetchCountry()
+    this.data.fetchCountry()
     .subscribe((data) => {
       console.log(data);
       this.confirmed = data.confirmed;
@@ -98,5 +117,30 @@ export class CountryPage implements OnInit {
   }
   ngOnInit() {
   }
-
+  loadData(event) {
+    this.event = event;
+    console.log(this.dynamicStateArray)
+    let count = 1;
+    setTimeout(() => {
+      console.log('Done');
+      event.target.complete();
+      let dynamicIndex = this.dynamicStateArray.length-1;
+      while (this.dynamicStateArray.length < this.stateArray.length && count<=12) {
+        dynamicIndex++;
+        this.dynamicStateArray.push(this.stateArray[dynamicIndex]);
+        count++;
+      }
+      if (this.dynamicStateArray.length === this.stateArray.length) {
+        event.target.disabled = true;
+      }
+    }, 300);
+  }
+  ionViewWillLeave() {
+console.log("left");
+this.event.target.disabled = false
+this.dynamicStateArray = this.stateArray.slice(0,10);
+  }
+  ionViewWillEnter() {
+    this.content.scrollToTop(500);
+  }
 }

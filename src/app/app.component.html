@@ -48,7 +48,10 @@
     <ion-router-outlet id="main-content"></ion-router-outlet>
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-
+<ion-tab-button (click)="vibrate()" tab="district">
+      <ion-icon src="../assets/icon/location-sharp.svg" color="primary"></ion-icon>
+      <ion-label>State</ion-label>
+    </ion-tab-button>
 <ion-tab-button (click)="vibrate()" tab="country">
       <ion-icon src="../assets/icon/map-sharp.svg" color="primary"></ion-icon>
       <ion-label>Country</ion-label>
@@ -59,14 +62,13 @@
       <ion-label>Global</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button (click)="vibrate()" tab="district">
-      <ion-icon src="../assets/icon/location-sharp.svg" color="primary"></ion-icon>
-      <ion-label>District</ion-label>
-    </ion-tab-button>
+    
 
     
 
-    <ion-tab-button (click)="vibrate()" tab="analysis">  
+ <!--
+
+ <ion-tab-button (click)="vibrate()" tab="analysis">  
       <ion-icon src="../assets/icon/bar-chart-sharp.svg" color="primary"></ion-icon>
       <ion-label>Analysis</ion-label>
     </ion-tab-button>
@@ -75,7 +77,9 @@
       <ion-icon src="../assets/icon/pulse-sharp.svg" color="primary"></ion-icon>
       <ion-label>Track All</ion-label>
     </ion-tab-button>
-  </ion-tab-bar>
+
+ -->  
+   </ion-tab-bar>
 </ion-tabs>
   </ion-split-pane>
 

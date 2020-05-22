@@ -1,4 +1,4 @@
-import { Covid19Service } from './../../providers/covid19.service';
+import { DataService } from '../../providers/data.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 
@@ -23,7 +23,7 @@ export class AnalysisPage implements OnInit {
   global_confirmed: any;
   global_recovered: any;
   global_deaths: any;
-  constructor(private covid19: Covid19Service) {
+  constructor(private data: DataService) {
     this.apiCall();
     setInterval(() => {
       setTimeout(() => {
@@ -35,14 +35,14 @@ export class AnalysisPage implements OnInit {
     }, 21600000);
   }
   apiCall() {
-    this.covid19.fetchGlobalData()
+    this.data.fetchGlobalData()
       .subscribe((data) => {
         this.global_confirmed = data.confirmed;
         this.global_recovered = data.recovered;
         this.global_deaths = data.deaths;
       });
 
-    this.covid19.fetchCountryData()
+    this.data.fetchCountryData()
       .subscribe((data) => {
           data.sort((a, b) => {
     return b.deaths.value - a.deaths.value;

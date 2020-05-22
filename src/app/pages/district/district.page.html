@@ -11,35 +11,47 @@
 <ion-content>
  <img src="https://thumbs.gfycat.com/CrispUglyGalapagossealion-size_restricted.gif">
 <ion-card>
-
   <ion-card-header>
                  
 
-    <ion-card-title><b>District Level Status</b></ion-card-title>
+    <ion-card-subtitle>Latest live feed</ion-card-subtitle>
+    <ion-card-title><b>Maharashtra Status</b></ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
-<ion-spinner *ngIf="spinnerFlag" name="lines"></ion-spinner>
+            <ion-chip  color="secondary" item-content>
+  <ion-label class="chip"  color="warning">Confirmed: <b>{{confirmed}}</b> </ion-label>
+</ion-chip>
+   <ion-chip color="secondary" item-content>
+  <ion-label class="chip" color="danger">Recovered: <b>{{recovered}}</b></ion-label>
+</ion-chip>
+   <ion-chip color="secondary" item-content>
+  <ion-label class="chip" color="success">Deceased: <b>{{deaths}}</b> </ion-label>
+</ion-chip>
+  </ion-card-content>
+</ion-card>
 
+
+<ion-spinner *ngIf="districtArray.length === 0" name="lines"></ion-spinner>
 <ion-grid>
   <ion-row  class="table">
-    <ion-col class="location" size="4">
-      <div>
+    <ion-col >
+      <div class="location">
         Location
       </div>
     </ion-col>
-    <ion-col class="confirmed">
-      <div>
+    <ion-col (click)="sortToggle('totalCases')">
+      <div class="confirmed" >
         Confirmed
       </div>
     </ion-col>
-    <ion-col class="recovered">
-      <div>
+    <ion-col (click)="sortToggle('recovered')">
+      <div class="recovered" >
         Recovered
       </div>
     </ion-col>
-    <ion-col class="deceased">
-      <div>
+    <ion-col (click)="sortToggle('deaths')">
+      <div class="deceased" >
         Deaths
       </div>
     </ion-col>
@@ -47,10 +59,10 @@
 
 
 
-<div  *ngFor="let district of districts">
+<div  *ngFor="let district of dynamicDistrictArray">
     <hr id="divider">
     <ion-row class="table">
-    <ion-col class="location" size="4">
+    <ion-col class="location">
       <div>
         {{district.name}}
       </div>
@@ -77,6 +89,12 @@
 </ion-grid>
 
 
-  </ion-card-content>
-</ion-card>
+
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Vibration } from '@ionic-native/vibration/ngx';
-import { Covid19Service } from './providers/covid19.service';
+import { DataService } from './providers/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,7 +31,7 @@ import { AboutModule } from './pages/about/about.module';
     IonicStorageModule.forRoot()
   ],
   declarations: [AppComponent],
-  providers: [InAppBrowser, SplashScreen, StatusBar, Covid19Service, Vibration, Storage],
+  providers: [InAppBrowser, SplashScreen, StatusBar, DataService, Vibration, Storage],
   bootstrap: [AppComponent],
   entryComponents: [AboutPage]
 })

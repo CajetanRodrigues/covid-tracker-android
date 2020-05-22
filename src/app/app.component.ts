@@ -19,30 +19,30 @@ import { Storage } from '@ionic/storage';
 export class AppComponent implements OnInit {
   appPages = [
     {
-      title: 'Country Status',
-      url: 'country',
-      icon: 'map'
-    },
-    {
-      title: 'District Status',
+      title: 'State Level',
       url: 'district',
       icon: 'location'
     },
     {
-      title: 'Global Status',
+      title: 'Country Level',
+      url: 'country',
+      icon: 'map'
+    },
+    {
+      title: 'Global Level',
       url: 'global',
       icon: 'planet'
     },
-    {
-      title: 'Global Comparison',
-      url: 'analysis',
-      icon: 'bar-chart'
-    },
-    {
-      title: 'Countries list',
-      url: 'meals',
-      icon: 'pulse'
-    },
+    // {
+    //   title: 'Global Comparison',
+    //   url: 'analysis',
+    //   icon: 'bar-chart'
+    // },
+    // {
+    //   title: 'Countries list',
+    //   url: 'meals',
+    //   icon: 'pulse'
+    // },
   ];
   loggedIn = false;
   dark = true;
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
 
   }
   vibrate() {
-    this.vibration.vibrate(100);
+    this.vibration.vibrate(10);
   }
   async ngOnInit() {
 
