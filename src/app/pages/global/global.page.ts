@@ -1,7 +1,7 @@
 import { DataService } from '../../providers/data.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { IonInfiniteScroll, IonContent } from '@ionic/angular';
+import { IonInfiniteScroll, IonContent, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-global',
@@ -21,7 +21,8 @@ export class GlobalPage implements OnInit {
   dynamicGlobalArray: any = [];
   event: any;
   constructor(private data: DataService,
-    private storage: Storage) {
+    private storage: Storage, private menu: MenuController) {
+      this.menu.enable(true);
       // console.log(this.console(err))
       
       this.apiCall();
@@ -59,14 +60,14 @@ sortToggle(param) {
       this.countryArray.sort((a, b) => {
         return b.recovered - a.recovered;
       });
-      this.dynamicGlobalArray = this.countryArray.slice(0,this.dynamicGlobalArray.length-1);
+      this.dynamicGlobalArray = this.countryArray.slice(0,10);
 
       this.sortToggleflag = false;
     } else {
       this.countryArray.sort((a, b) => {
         return a.recovered - b.recovered;
       });
-      this.dynamicGlobalArray = this.countryArray.slice(0,this.dynamicGlobalArray.length-1);
+      this.dynamicGlobalArray = this.countryArray.slice(0,10);
 
       this.sortToggleflag = true;
     }
@@ -78,14 +79,14 @@ sortToggle(param) {
     this.countryArray.sort((a, b) => {
       return b.deaths - a.deaths;
     });
-    this.dynamicGlobalArray = this.countryArray.slice(0,this.dynamicGlobalArray.length-1);
+    this.dynamicGlobalArray = this.countryArray.slice(0,10);
 
     this.sortToggleflag = false;
   } else {
     this.countryArray.sort((a, b) => {
       return a.deaths - b.deaths;
     });
-    this.dynamicGlobalArray = this.countryArray.slice(0,this.dynamicGlobalArray.length-1);
+    this.dynamicGlobalArray = this.countryArray.slice(0,10);
 
     this.sortToggleflag = true;
   }
@@ -96,7 +97,7 @@ sortToggle(param) {
       this.countryArray.sort((a, b) => {
         return b.confirmed - a.confirmed;
       });
-      this.dynamicGlobalArray = this.countryArray.slice(0,this.dynamicGlobalArray.length-1);
+      this.dynamicGlobalArray = this.countryArray.slice(0,10);
       this.sortToggleflag = false;
       console.log(this.sortToggleflag);
       console.log(this.countryArray)
@@ -104,7 +105,7 @@ sortToggle(param) {
       this.countryArray.sort((a, b) => {
         return a.confirmed - b.confirmed;
       });
-      this.dynamicGlobalArray = this.countryArray.slice(0,this.dynamicGlobalArray.length-1);
+      this.dynamicGlobalArray = this.countryArray.slice(0,10);
       this.sortToggleflag = true;
       console.log(this.sortToggleflag);
       console.log(this.countryArray)
@@ -140,6 +141,12 @@ ionViewWillLeave() {
     }
     ionViewWillEnter() {
       this.content.scrollToTop(500);
+    }
+    doRefresh(event) {
+      this.apiCall();
+      setTimeout(() => {
+        event.target.complete();
+      }, 2000);
     }
 
 }

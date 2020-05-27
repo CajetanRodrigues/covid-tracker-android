@@ -4,37 +4,59 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>Maharashtra Status</ion-title>
+    <ion-title>Maharashtra</ion-title>
 
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
  <img src="https://thumbs.gfycat.com/CrispUglyGalapagossealion-size_restricted.gif">
-<ion-card>
+<ion-card mode="ios">
   <ion-card-header>
                  
 
     <ion-card-subtitle>Latest live feed</ion-card-subtitle>
-    <ion-card-title><b>Maharashtra Status</b></ion-card-title>
+    <ion-card-title><b>Maharashtra</b></ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
-            <ion-chip  color="secondary" item-content>
-  <ion-label class="chip"  color="warning">Confirmed: <b>{{confirmed}}</b> </ion-label>
-</ion-chip>
-   <ion-chip color="secondary" item-content>
-  <ion-label class="chip" color="danger">Recovered: <b>{{recovered}}</b></ion-label>
-</ion-chip>
-   <ion-chip color="secondary" item-content>
-  <ion-label class="chip" color="success">Deceased: <b>{{deaths}}</b> </ion-label>
-</ion-chip>
+         
+
+<ion-grid>
+
+  <ion-row >
+    <ion-col>
+      <div  style="text-align: center; display: block; margin: auto; font-size: 16px;font-weight: bold; color: red">
+        {{confirmed}}
+        <p><ion-icon name="warning-sharp"></ion-icon></p>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div style="text-align: center; display: block; margin: auto; font-size: 16px;font-weight: bold; color: green" >
+        {{recovered}}
+        <p><ion-icon name="medkit-sharp"></ion-icon></p>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div style="text-align: center; display: block; margin: auto; font-size: 16px;font-weight: bold; color: orange" >
+        {{deaths}}
+        <p><ion-icon name="skull-sharp"></ion-icon></p>
+      </div>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
   </ion-card-content>
 </ion-card>
 
 
 <ion-spinner *ngIf="districtArray.length === 0" name="lines"></ion-spinner>
 <ion-grid>
-  <ion-row  class="table">
+  <ion-row style="position: sticky;top: 0;
+left: 0;
+right: 0;
+z-index: 9999;backdrop-filter: blur(8px);" class="table">
     <ion-col >
       <div class="location">
         Location

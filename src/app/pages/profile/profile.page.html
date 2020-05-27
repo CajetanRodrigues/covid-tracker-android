@@ -1,0 +1,33 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="hand">Profile</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card mode="ios">
+  <ion-card-header>
+
+        <img style="margin: 0px;" src="{{gimage}}" alt="Ionic Logo">
+
+
+  </ion-card-header>
+
+  <ion-card-content>
+    We value your personal information and use it only for personalisation!
+    <ion-list>
+  <ion-item>
+    <ion-label><b>Name : </b> <span style="float:right"> {{gname}} </span></ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label> <b>Email: </b><span style="float:right"> {{gemail}} </span></ion-label>
+  </ion-item>
+</ion-list>
+  </ion-card-content>
+</ion-card>
+</ion-content>

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { DataService } from '../../providers/data.service';
-import { IonInfiniteScroll } from '@ionic/angular';
+import { IonInfiniteScroll, MenuController } from '@ionic/angular';
 import { IonContent } from '@ionic/angular';
 
 @Component({
@@ -19,8 +19,8 @@ export class CountryPage implements OnInit {
   sortToggleflag = false;
   dynamicStateArray: any = [];
   event:any;
-  constructor(private data: DataService) {
-
+  constructor(private data: DataService, private menu: MenuController) {
+    this.menu.enable(true);
     this.apiCall();
     setTimeout(() => {
       this.spinnerFlag = false;
@@ -39,14 +39,14 @@ export class CountryPage implements OnInit {
         this.stateArray.sort((a, b) => {
           return b.recoveries - a.recoveries;
         });
-        this.dynamicStateArray = this.stateArray.slice(0,this.dynamicStateArray.length-1);
+        this.dynamicStateArray = this.stateArray.slice(0,10);
 
         this.sortToggleflag = false;
       } else {
         this.stateArray.sort((a, b) => {
           return a.recoveries - b.recoveries;
         });
-        this.dynamicStateArray = this.stateArray.slice(0,this.dynamicStateArray.length-1);
+        this.dynamicStateArray = this.stateArray.slice(0,10);
 
         this.sortToggleflag = true;
       }
@@ -58,14 +58,14 @@ export class CountryPage implements OnInit {
       this.stateArray.sort((a, b) => {
         return b.deaths - a.deaths;
       });
-      this.dynamicStateArray = this.stateArray.slice(0,this.dynamicStateArray.length-1);
+      this.dynamicStateArray = this.stateArray.slice(0,10);
 
       this.sortToggleflag = false;
     } else {
       this.stateArray.sort((a, b) => {
         return a.deaths - b.deaths;
       });
-      this.dynamicStateArray = this.stateArray.slice(0,this.dynamicStateArray.length-1);
+      this.dynamicStateArray = this.stateArray.slice(0,10);
 
       this.sortToggleflag = true;
     }
@@ -76,7 +76,7 @@ export class CountryPage implements OnInit {
         this.stateArray.sort((a, b) => {
           return b.totalCases - a.totalCases;
         });
-        this.dynamicStateArray = this.stateArray.slice(0,this.dynamicStateArray.length-1);
+        this.dynamicStateArray = this.stateArray.slice(0,10);
 
         this.sortToggleflag = false;
         console.log(this.sortToggleflag);
@@ -84,7 +84,7 @@ export class CountryPage implements OnInit {
         this.stateArray.sort((a, b) => {
           return a.totalCases - b.totalCases;
         });
-        this.dynamicStateArray = this.stateArray.slice(0,this.dynamicStateArray.length-1);
+        this.dynamicStateArray = this.stateArray.slice(0,10);
 
         this.sortToggleflag = true;
         console.log(this.sortToggleflag);
@@ -142,5 +142,11 @@ this.dynamicStateArray = this.stateArray.slice(0,10);
   }
   ionViewWillEnter() {
     this.content.scrollToTop(500);
+  }
+  doRefresh(event) {
+    this.apiCall();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
   }
 }

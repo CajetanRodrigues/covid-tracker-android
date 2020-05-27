@@ -1,3 +1,7 @@
+import { Facebook } from '@ionic-native/facebook/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { Network } from '@ionic-native/network/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { DataService } from './providers/data.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,8 +17,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
-import { AboutPage } from './pages/about/about';
-import { AboutModule } from './pages/about/about.module';
+
 
 @NgModule({
   imports: [
@@ -27,12 +30,12 @@ import { AboutModule } from './pages/about/about.module';
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     }),
-    AboutModule,
     IonicStorageModule.forRoot()
   ],
   declarations: [AppComponent],
-  providers: [InAppBrowser, SplashScreen, StatusBar, DataService, Vibration, Storage],
+  // tslint:disable-next-line: max-line-length
+  providers: [InAppBrowser, SplashScreen, StatusBar, DataService, Vibration, Storage, Network, NativeStorage, GooglePlus, Facebook],
   bootstrap: [AppComponent],
-  entryComponents: [AboutPage]
+  entryComponents: []
 })
 export class AppModule {}

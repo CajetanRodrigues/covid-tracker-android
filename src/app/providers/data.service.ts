@@ -13,7 +13,10 @@ const httpOptions = {
 })
 export class DataService {
   countryArray: any[];
-
+  email: any;
+  name: any;
+  image: any;
+  locations = new Observable();
   constructor(private http: HttpClient) { }
 
   fetchCountryData(): Observable<any> {
@@ -39,5 +42,10 @@ export class DataService {
   fetchCountry(): Observable<any> {
     return this.http.get<any>
       ('http://13.127.91.5:8082/country', httpOptions);
+  }
+  setTabsShowProperty(tabsShow: boolean) {
+    this.locations = new Observable((observer) => {
+      observer.next(tabsShow);
+    });
   }
 }

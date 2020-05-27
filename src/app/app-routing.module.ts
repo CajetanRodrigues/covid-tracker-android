@@ -1,15 +1,12 @@
+import { SignUpModule } from './pages/signup/signup.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/district', // Change it to /tutorial later 
+    redirectTo: '/login', // Change it to /tutorial later 
     pathMatch: 'full'
-  },
-  {
-    path: 'meals',
-    loadChildren: () => import('./pages/meals/meals.module').then( m => m.MealsPageModule)
   },
   {
     path: 'global',
@@ -26,7 +23,20 @@ const routes: Routes = [
   {
     path: 'district',
     loadChildren: () => import('./pages/district/district.module').then( m => m.DistrictPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginModule)
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignUpModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   }
+
 
 
 

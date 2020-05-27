@@ -10,23 +10,13 @@
 </ion-header>
 
 <ion-content>
-<ion-card class="welcome-card">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+<ion-card mode="ios" *ngIf="propertySet === 'deaths'" class="welcome-card">
     <ion-card-header>
       <ion-card-subtitle> Deaths</ion-card-subtitle>
-      <ion-card-title>Top 5 Countries</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-    <!-- Crescent -->
-    <div *ngIf="spinnerFlag">
-<ion-spinner name="lines"></ion-spinner>
-</div>
-      <canvas #barChart></canvas>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="welcome-card">
-    <ion-card-header>
-      <ion-card-subtitle>Case Comparison</ion-card-subtitle>
       <ion-card-title>Relative Comparison</ion-card-title>
     </ion-card-header>
     <ion-card-content>
@@ -34,7 +24,67 @@
     <div *ngIf="spinnerFlag">
 <ion-spinner name="lines"></ion-spinner>
 </div>
+<div class="chart-container">
+
+      <canvas #barChart></canvas>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card mode="ios" *ngIf="propertySet === 'confirmed'" class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle> Confirmed</ion-card-subtitle>
+      <ion-card-title>Relative Comparison</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    <!-- Crescent -->
+    <div *ngIf="spinnerFlag">
+<ion-spinner name="lines"></ion-spinner>
+</div>
+<div class="chart-container">
+
+      <canvas #confirmed></canvas>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+<ion-card mode="ios" *ngIf="propertySet === 'recovered'" class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle> Recovered</ion-card-subtitle>
+      <ion-card-title>Relative Comparison</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    <!-- Crescent -->
+    <div *ngIf="spinnerFlag">
+<ion-spinner name="lines"></ion-spinner>
+</div>
+<div class="chart-container">
+
+      <canvas #recovered></canvas>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+
+
+<!--
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle>Case Comparison</ion-card-subtitle>
+      <ion-card-title>Relative Comparison</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    <div *ngIf="spinnerFlag">
+<ion-spinner name="lines"></ion-spinner>
+</div>
       <canvas #comparison></canvas>
     </ion-card-content>
   </ion-card>
+  -->
+
 </ion-content>
+<ion-button (click)="presentActionSheet()" expand="full" >Change Field</ion-button>
+
