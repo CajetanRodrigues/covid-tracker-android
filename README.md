@@ -5,7 +5,7 @@ This application accomplishes to deliver the latest data related to covid19.
 
 <img src="https://github.com/CajetanRodrigues/covid-tracker-android/blob/master/resources/icon.png" width="150">
 
- **Download APK** :  https://github.com/CajetanRodrigues/fit-meal/blob/master/app-release.apk
+ **Download APK** :  https://github.com/CajetanRodrigues/covid-tracker-android/blob/master/app-release.apk
 
 ## Table of Contents
 - [Getting Started](#getting-started)
